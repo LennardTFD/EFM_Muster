@@ -45,9 +45,9 @@ public class Liste
 
     public int getMiniPos(int entry)
     {
-        int min = entry;
+        int min = entry;//Punkt ab dem Array unsortiert ist
         for(int i = min; i < zahl.length; i++)
-            if(zahl[i] < zahl[min])
+            if(zahl[i] < zahl[min])//Wenn aktuelle Zahl kleiner als letzte kleinste
                 min = i;
         return min;
     }
@@ -57,8 +57,8 @@ public class Liste
         int min;
         for(int i = 0; i < zahl.length; i++)
         {
-            min = getMiniPos(i);
-            int tmp = zahl[min];
+            min = getMiniPos(i);//Nimm kleinste Zahl
+            int tmp = zahl[min];//Dreieckstausch
             zahl[min] = zahl[i];
             zahl[i] = tmp;
         }
@@ -69,16 +69,17 @@ public class Liste
         erzeugen();
         long start;
         long end;
-        int [] clonedArray = new int[MAX];
+        int [] clonedArray = new int[MAX];//Kopiere Liste für gleichwertiges Ergebniss
         for(int i = 0; i < clonedArray.length; i++)
         {
             clonedArray[i] = zahl[i];
         }
 
-        start = System.nanoTime();
-        bubblesort();
-        end = System.nanoTime();
-        long bubleSortTime = end-start;
+        start = System.nanoTime();//Start Zeit
+        bubblesort();//Sortiere
+        end = System.nanoTime();//End Zeit
+        long bubleSortTime = end-start;//Differenzzeit
+
         zahl = clonedArray;
         start = System.nanoTime();
         selectionSort();
@@ -97,7 +98,6 @@ public class Liste
     public void insertionSort()
     {
         int tmp;
-
         for(int i = 1; i < zahl.length; i++)
         {
             tmp = zahl[i];
